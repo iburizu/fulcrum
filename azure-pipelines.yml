@@ -1,0 +1,12 @@
+trigger:
+  - master
+
+pool: server
+
+jobs:
+  - job: HelloWorldJob
+    displayName: 'Print Hello World'
+    steps:
+      - script: echo "Hello, World!"
+        displayName: 'Run Hello World Script'
+
