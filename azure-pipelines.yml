@@ -1,12 +1,20 @@
 trigger:
   - master
 
-pool: server
+pool :
+  vmImage: "ubuntu=latest"
 
 jobs:
   - job: HelloWorldJob
-    displayName: 'Print Hello World'
+    displayName: 'Hello World Without CLI'
     steps:
-      - script: echo "Hello, World!"
-        displayName: 'Run Hello World Script'
+      - task: CmdLine@2
+        inputs:
+          script: echo Hello, World!
+        displayName: 'Print Hello Message'
+      - task: AzureCLI@2
+        inputs:
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'echo Hello, World!'
 
